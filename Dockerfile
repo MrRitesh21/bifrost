@@ -5,7 +5,8 @@ COPY config.json ./config.json
 
 EXPOSE 10000
 
-ENV APP_HOST=0.0.0.0
-ENV APP_PORT=10000
+# Expose env variables
+ENV BIFROST_HOST=0.0.0.0
 
-CMD ["./bifrost", "-app-dir", "."]
+# Start Bifrost binding to 0.0.0.0 and port 10000 to match Render expectations
+CMD ["./bifrost", "-app-dir", ".", "-host", "0.0.0.0", "-port", "10000"]
