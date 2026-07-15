@@ -1,0 +1,23 @@
+services:
+  - type: web
+    name: bifrost
+    runtime: docker
+
+    plan: starter
+
+    healthCheckPath: /
+
+    autoDeploy: true
+
+    envVars:
+      - key: APP_HOST
+        value: 0.0.0.0
+
+      - key: APP_PORT
+        value: 10000
+
+      - key: LOG_LEVEL
+        value: info
+
+      - key: LOG_STYLE
+        value: json
