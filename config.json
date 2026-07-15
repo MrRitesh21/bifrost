@@ -4,24 +4,24 @@
     "enabled": true,
     "type": "postgres",
     "config": {
-      "host": "env.BIFROST_DB_HOST",
-      "port": "env.BIFROST_DB_PORT",
-      "user": "env.BIFROST_DB_USER",
-      "password": "env.BIFROST_DB_PASSWORD",
-      "db_name": "env.BIFROST_DB_NAME",
-      "ssl_mode": "env.BIFROST_DB_SSLMODE"
+      "host": "dpg-d9bigs7aqgkc739f6bv0-a.singapore-postgres.render.com",
+      "port": "5432",
+      "user": "gateway_blt7_user",
+      "password": "FVcu3ehyndjNS9iPJN9EX0e6vXNlred5",
+      "db_name": "gateway_blt7",
+      "ssl_mode": "require"
     }
   },
   "logs_store": {
     "enabled": true,
     "type": "postgres",
     "config": {
-      "host": "env.BIFROST_DB_HOST",
-      "port": "env.BIFROST_DB_PORT",
-      "user": "env.BIFROST_DB_USER",
-      "password": "env.BIFROST_DB_PASSWORD",
-      "db_name": "env.BIFROST_DB_NAME",
-      "ssl_mode": "env.BIFROST_DB_SSLMODE"
+      "host": "dpg-d9bigs7aqgkc739f6bv0-a.singapore-postgres.render.com",
+      "port": "5432",
+      "user": "gateway_blt7_user",
+      "password": "FVcu3ehyndjNS9iPJN9EX0e6vXNlred5",
+      "db_name": "gateway_blt7",
+      "ssl_mode": "require"
     }
   }
 }
