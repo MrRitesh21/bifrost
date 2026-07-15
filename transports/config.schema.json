@@ -1386,6 +1386,10 @@
               "then": {
                 "type": "object",
                 "properties": {
+                  "connection_string": {
+                    "type": "string",
+                    "description": "Full PostgreSQL connection URI (e.g., postgresql://user:password@host:port/db)"
+                  },
                   "host": {
                     "type": "string",
                     "description": "Database host"
@@ -1456,19 +1460,26 @@
                     "pattern": "^[1-9][0-9]*(ns|us|µs|ms|s|m|h)$"
                   }
                 },
-                "required": [
-                  "host",
-                  "port",
-                  "user",
-                  "db_name",
-                  "ssl_mode"
-                ],
                 "oneOf": [
                   {
-                    "required": ["password"]
+                    "required": ["connection_string"]
                   },
                   {
-                    "required": ["password_command"]
+                    "required": [
+                      "host",
+                      "port",
+                      "user",
+                      "db_name",
+                      "ssl_mode"
+                    ],
+                    "oneOf": [
+                      {
+                        "required": ["password"]
+                      },
+                      {
+                        "required": ["password_command"]
+                      }
+                    ]
                   }
                 ],
                 "additionalProperties": false
@@ -1584,6 +1595,10 @@
               },
               "then": {
                 "properties": {
+                  "connection_string": {
+                    "type": "string",
+                    "description": "Full PostgreSQL connection URI (e.g., postgresql://user:password@host:port/db)"
+                  },
                   "host": {
                     "type": "string",
                     "description": "Database host"
@@ -1660,19 +1675,26 @@
                     "pattern": "^[1-9][0-9]*(ns|us|µs|ms|s|m|h)$"
                   }
                 },
-                "required": [
-                  "host",
-                  "port",
-                  "user",
-                  "db_name",
-                  "ssl_mode"
-                ],
                 "oneOf": [
                   {
-                    "required": ["password"]
+                    "required": ["connection_string"]
                   },
                   {
-                    "required": ["password_command"]
+                    "required": [
+                      "host",
+                      "port",
+                      "user",
+                      "db_name",
+                      "ssl_mode"
+                    ],
+                    "oneOf": [
+                      {
+                        "required": ["password"]
+                      },
+                      {
+                        "required": ["password_command"]
+                      }
+                    ]
                   }
                 ],
                 "additionalProperties": false

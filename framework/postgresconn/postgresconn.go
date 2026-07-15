@@ -30,13 +30,14 @@ type PasswordCommandConfig struct {
 
 // Config is the shared Postgres connection configuration used by framework stores.
 type Config struct {
-	Host            *schemas.SecretVar        `json:"host"`
-	Port            *schemas.SecretVar        `json:"port"`
-	User            *schemas.SecretVar        `json:"user"`
-	Password        *schemas.SecretVar        `json:"password"`
+	ConnectionString *schemas.SecretVar        `json:"connection_string,omitempty"`
+	Host            *schemas.SecretVar        `json:"host,omitempty"`
+	Port            *schemas.SecretVar        `json:"port,omitempty"`
+	User            *schemas.SecretVar        `json:"user,omitempty"`
+	Password        *schemas.SecretVar        `json:"password,omitempty"`
 	PasswordCommand *PasswordCommandConfig `json:"password_command,omitempty"`
-	DBName          *schemas.SecretVar        `json:"db_name"`
-	SSLMode         *schemas.SecretVar        `json:"ssl_mode"`
+	DBName          *schemas.SecretVar        `json:"db_name,omitempty"`
+	SSLMode         *schemas.SecretVar        `json:"ssl_mode,omitempty"`
 	MaxIdleConns    int                    `json:"max_idle_conns"`
 	MaxOpenConns    int                    `json:"max_open_conns"`
 	ConnMaxLifetime string                 `json:"conn_max_lifetime,omitempty"`
@@ -46,6 +47,12 @@ type Config struct {
 func Validate(config *Config, requireStaticPassword bool) error {
 	if config == nil {
 		return fmt.Errorf("config is required")
+	}
+	if config.ConnectionString != nil && config.ConnectionString.GetValue() != "" {
+		if _, err := parseConnMaxLifetime(config); err != nil {
+			return err
+		}
+		return nil
 	}
 	if config.Host == nil || config.Host.GetValue() == "" {
 		return fmt.Errorf("postgres host is required")
@@ -88,6 +95,9 @@ func Validate(config *Config, requireStaticPassword bool) error {
 
 // BuildDSN assembles a libpq-style DSN from the validated config.
 func BuildDSN(config *Config) string {
+	if config.ConnectionString != nil && config.ConnectionString.GetValue() != "" {
+		return config.ConnectionString.GetValue()
+	}
 	password := ""
 	if config.Password != nil {
 		password = config.Password.GetValue()

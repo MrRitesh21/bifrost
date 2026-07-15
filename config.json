@@ -1,7 +1,17 @@
-"config_store": {
-  "enabled": true,
-  "type": "postgres",
-  "config": {
-    "connection_string": "env.DATABASE_URL"
+{
+  "$schema": "https://raw.githubusercontent.com/maximhq/bifrost/main/transports/config.schema.json",
+  "config_store": {
+    "enabled": true,
+    "type": "postgres",
+    "config": {
+      "connection_string": "env.DATABASE_URL"
+    }
+  },
+  "logs_store": {
+    "enabled": true,
+    "type": "postgres",
+    "config": {
+      "connection_string": "env.DATABASE_URL"
+    }
   }
 }
