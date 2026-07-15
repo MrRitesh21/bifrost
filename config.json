@@ -4,14 +4,24 @@
     "enabled": true,
     "type": "postgres",
     "config": {
-      "connection_string": "env.DATABASE_URL"
+      "host": "env.BIFROST_DB_HOST",
+      "port": "env.BIFROST_DB_PORT",
+      "user": "env.BIFROST_DB_USER",
+      "password": "env.BIFROST_DB_PASSWORD",
+      "db_name": "env.BIFROST_DB_NAME",
+      "ssl_mode": "env.BIFROST_DB_SSLMODE"
     }
   },
   "logs_store": {
     "enabled": true,
     "type": "postgres",
     "config": {
-      "connection_string": "env.DATABASE_URL"
+      "host": "env.BIFROST_DB_HOST",
+      "port": "env.BIFROST_DB_PORT",
+      "user": "env.BIFROST_DB_USER",
+      "password": "env.BIFROST_DB_PASSWORD",
+      "db_name": "env.BIFROST_DB_NAME",
+      "ssl_mode": "env.BIFROST_DB_SSLMODE"
     }
   }
 }
