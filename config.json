@@ -1,27 +1,7 @@
-{
-  "$schema": "https://raw.githubusercontent.com/maximhq/bifrost/main/transports/config.schema.json",
-  "config_store": {
-    "enabled": true,
-    "type": "postgres",
-    "config": {
-      "host": "dpg-d9bigs7aqgkc739f6bv0-a.singapore-postgres.render.com",
-      "port": "5432",
-      "user": "gateway_blt7_user",
-      "password": "FVcu3ehyndjNS9iPJN9EX0e6vXNlred5",
-      "db_name": "gateway_blt7",
-      "ssl_mode": "require"
-    }
-  },
-  "logs_store": {
-    "enabled": true,
-    "type": "postgres",
-    "config": {
-      "host": "dpg-d9bigs7aqgkc739f6bv0-a.singapore-postgres.render.com",
-      "port": "5432",
-      "user": "gateway_blt7_user",
-      "password": "FVcu3ehyndjNS9iPJN9EX0e6vXNlred5",
-      "db_name": "gateway_blt7",
-      "ssl_mode": "require"
-    }
+"config_store": {
+  "enabled": true,
+  "type": "postgres",
+  "config": {
+    "connection_string": "env.DATABASE_URL"
   }
 }
